@@ -24,7 +24,7 @@
             <div class="my-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
-            <p class="text-center">If you don't have account ?<a href="index.php?page=register">Register</a></p>
+            <p class="text-center">If you don't have account ?<a href="/register">Register</a></p>
        </form> 
     </div>
 </body>
