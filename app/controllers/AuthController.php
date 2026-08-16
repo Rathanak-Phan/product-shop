@@ -8,16 +8,40 @@
         }
 
         public function home() {
+
+            $user = $this->user->getUserById($_SESSION['user_id']);
+
             require "./app/views/home.php";
         }
         
         public function login() {
+            $errorLogin = '';
+
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = $this->user->getUserByEmail($email);
+
+            if (!$user){
+                $errorLogin = "You don't have an account,..."; 
+            }
+
+            if (!$errorLogin && password_verify($password, $user['password'])){
+                $_SESSION['user_id'] = $user['id'];
+
+                $_SESSION['expire_at'] = time() + 60;
+
+                header("Location: /");
+                exit();
+            }
+
 
             require "./app/views/auth/login.php"; 
         }
 
         public function register() {
             $errorEmail = '';
+            $errorPassword = '';
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $first_name = $_POST['first_name'];
@@ -34,8 +58,29 @@
                     $errorEmail = 'Email already exist';
                 }
 
+                if (strlen($password) < 8){
+                    $errorPassword = 'Password must be at least 8 character';
+                } else {
+                    
+                    
+                    if (!preg_match('/[A-Z]/', $password)){
+                        $errorPassword = 'Password must be at least 1 uppercase';
+                    }
+                        
+                    if (!preg_match('/[a-z]/', $password)){
+                        $errorPassword = 'Password must be at least 1 lowercase';
+                    }
+                            
+                    if (!preg_match('/[0-9]/', $password)){
+                        $errorPassword = 'Password must be at least 1 number';
+                    }
+                                
+                    if (!preg_match('/[^a-zA-Z0-9]/', $password)){
+                        $errorPassword = 'Password must be at least 1 specials character';
+                    }
+                }
 
-                if (!$errorEmail) {
+                if (!$errorEmail && !$errorPassword) {
 
                     $hash_password = password_hash(
                         $password,

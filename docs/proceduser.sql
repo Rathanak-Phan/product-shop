@@ -25,7 +25,7 @@ CREATE PROCEDURE getUserByEmail (
 )
 
 BEGIN 
-SELECT * FROM users WHERE email = u_email;
+SELECT * FROM users WHERE email = u_email LIMIT 1;
 END $$
 
 DELIMITER ;

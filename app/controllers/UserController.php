@@ -11,4 +11,12 @@
             requireAuth();
             require "./app/views/profile.php";
         }
+
+        public function logout(){
+            session_unset();
+            session_destroy();
+
+            header("location: /login");
+            exit();
+        }
     }

@@ -4,4 +4,9 @@
             header("Location: /login");
             exit();
         }
+
+        if (isset($_SESSION['expire_at']) > time()){
+            header("Location: /login");
+            exit();
+        }
     }

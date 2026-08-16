@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-center">
-        <form action="" class="col-xl-4 col-md-6 col-12">
+        <form action="/login" method="POST" class="col-xl-4 col-md-6 col-12">
             <h1 class="text-center my-5">Login form</h1>
 
             <div class="my-3">

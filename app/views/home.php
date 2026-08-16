@@ -23,7 +23,7 @@
             </nav>
             
             <div>
-                <?= htmlspecialchars($user['username'] ?? "Guest") ?>
+                <?= htmlspecialchars(($user) ? $user['first_name'] . ' ' . $user['last_name'] : 'Guest') ?>
                 <a href="/profile">Profile</a>
                 <a href="/logout">Logout</a>
             </div>

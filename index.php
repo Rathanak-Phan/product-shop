@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require "./config/db.php";
     require "./app/models/User.php";
     require "./app/controllers/AuthController.php";

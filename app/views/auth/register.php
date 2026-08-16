@@ -37,7 +37,16 @@
 
             <div class="my-3">
                 <label for="" class="form-label">Password: </label>
-                <input type="text" name="password" class="form-control">
+                <input type="password" name="password" class="form-control">
+                <?php if (isset($errorPassword)) { ?>
+                    <p id="error_password" class="text-danger mt-1" style="font-size: 10px;"><?= $errorPassword ?></p>
+
+                    <script>
+                        setTimeout(() => {
+                            document.getElementById("error_password").style.display = 'none';
+                        }, 3000)
+                    </script>
+                <?php } ?>
             </div>
 
             <div class="my-3 d-flex justify-content-center">

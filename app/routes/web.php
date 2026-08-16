@@ -19,6 +19,11 @@
             '/profile' => [
                 $userController,
                 'profile'
+            ],
+
+            '/logout' => [
+                $userController,
+                'logout'
             ]
         ],
 
@@ -26,7 +31,14 @@
             '/register' => [
                 $authController,
                 'register'
-            ]
+            ],
+
+            '/login' => [
+                $authController,
+                'login'
+            ],
+
+            
         ]
 
         // 'login' => 'login',
