@@ -36,4 +36,18 @@
 
             return mysqli_fetch_assoc($result);
         }
+
+        public function update($id, $first_name, $last_name, $bio, $phone, $profile) {
+            return mysqli_query(
+                $this->connection,
+                "UPDATE users SET 
+                    first_name = '$first_name',
+                    last_name = '$last_name',
+                    bio = '$bio',
+                    phone = '$phone',
+                    profile = '$profile'
+                    WHERE id = $id
+                "
+            );
+        }
     }

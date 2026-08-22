@@ -55,7 +55,7 @@
                             <?php if (!empty($user['profile'])): ?>
 
                                 <img
-                                    src="<?= htmlspecialchars($user['profile']) ?>"
+                                    src="<?= '/uploads/profile/' . htmlspecialchars($user['profile']) ?>"
                                     alt="Profile"
                                     class="w-24 h-24 rounded-full object-cover border-4 border-gray-100"
                                 >
@@ -172,6 +172,7 @@
                             </label>
 
                             <input
+                                disabled
                                 type="email"
                                 id="email"
                                 name="email"

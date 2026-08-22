@@ -38,7 +38,7 @@
                     <?php if (!empty($user['profile'])): ?>
 
                         <img
-                            src="<?= htmlspecialchars($user['profile']) ?>"
+                            src="<?= '/uploads/profile/' . htmlspecialchars($user['profile']) ?>"
                             alt="Profile"
                             class="w-32 h-32 rounded-full object-cover border-4 border-gray-100"
                         >
@@ -102,6 +102,17 @@
 
                 </div>
 
+                <!-- logout -->
+                <div class="mt-6">
+
+                    <a
+                        href="/login"
+                        class="block w-full text-center bg-red-600 text-white py-2.5 rounded-lg hover:bg-red-800 transition"
+                    >
+                        Logout
+                    </a>
+
+                </div>
             </div>
 
 

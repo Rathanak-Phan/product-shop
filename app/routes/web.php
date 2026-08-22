@@ -43,6 +43,11 @@
                 'login'
             ],
 
+            '/profile/update' => [
+                $userController,
+                'update'
+            ]
+
             
         ]
 
