@@ -33,6 +33,8 @@
 
                 header("Location: /");
                 exit();
+            } else {
+                $errorLogin = 'Incorrect password';
             }
 
 

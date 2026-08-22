@@ -21,6 +21,18 @@
                 <input type="text" name="password" class="form-control">
             </div>
 
+            <div>
+                <?php if (isset($errorLogin)) { ?>
+                    <p id="error_login" class="text-light bg-danger mt-1 alert " style="font-size: 10px;"><?= $errorLogin ?></p>
+
+                    <script>
+                        setTimeout(() => {
+                            document.getElementById("error_login").style.display = 'none';
+                        }, 3000)
+                    </script>
+                <?php } ?>
+            </div>
+
             <div class="my-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>

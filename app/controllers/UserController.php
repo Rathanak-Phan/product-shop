@@ -9,7 +9,20 @@
         public function profile(){
             require "./app/helpers/auth.php";
             requireAuth();
-            require "./app/views/profile.php";
+            $user = $this->user->getUserById($_SESSION['user_id']);
+            require "./app/views/profile/profile.php";
+        }
+
+        public function editProfile() {
+            require "./app/helpers/auth.php";
+            requireAuth();
+            $user = $this->user->getUserById($_SESSION['user_id']);
+
+            require "./app/views/profile/update.php";
+        }
+
+        public function update() {
+    
         }
 
         public function logout(){

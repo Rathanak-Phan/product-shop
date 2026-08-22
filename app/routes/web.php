@@ -21,6 +21,11 @@
                 'profile'
             ],
 
+            '/profile/edit' => [
+                $userController,
+                'editProfile'
+            ],
+
             '/logout' => [
                 $userController,
                 'logout'
