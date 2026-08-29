@@ -29,6 +29,12 @@
             '/logout' => [
                 $userController,
                 'logout'
+            ],
+
+            // Admin
+            '/dashboard' => [
+                $adminController,
+                'showDashboard'
             ]
         ],
 

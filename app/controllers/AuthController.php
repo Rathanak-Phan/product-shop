@@ -28,8 +28,14 @@
 
             if (!$errorLogin && password_verify($password, $user['password'])){
                 $_SESSION['user_id'] = $user['id'];
+                $_SESSION['role'] = $user['role_id'];
 
                 $_SESSION['expire_at'] = time() + 60;
+
+                if ($_SESSION['role'] == 2){
+                    header("Location: /dashboard");
+                    exit();
+                }
 
                 header("Location: /");
                 exit();

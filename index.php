@@ -5,10 +5,12 @@
     require "./app/models/User.php";
     require "./app/controllers/AuthController.php";
     require "./app/controllers/UserController.php";
+    require "./app/controllers/AdminController.php";
     
     $user = new User($conn);
     $authController = new AuthController($user);
     $userController = new UserController($user);
+    $adminController =  new AdminController($user);
 
     require "./app/routes/web.php";
 

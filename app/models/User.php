@@ -8,13 +8,16 @@
         }
 
         public function create($first_name, $last_name, $email, $password){
+            $role_id = 1;    
+
             return mysqli_query(
                 $this->connection,
-                "INSERT INTO users (first_name, last_name, email, password) VALUES (
+                "INSERT INTO users (first_name, last_name, email, password, role_id) VALUES (
                     '$first_name',
                     '$last_name',
                     '$email',
-                    '$password'
+                    '$password',
+                    '$role_id'
                 );"
             );
         }

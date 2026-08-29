@@ -106,7 +106,7 @@
                 <div class="mt-6">
 
                     <a
-                        href="/login"
+                        href="/logout"
                         class="block w-full text-center bg-red-600 text-white py-2.5 rounded-lg hover:bg-red-800 transition"
                     >
                         Logout

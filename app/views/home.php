@@ -23,8 +23,14 @@
             </nav>
             
             <div>
-                <?= htmlspecialchars(($user) ? $user['first_name'] . ' ' . $user['last_name'] : 'Guest') ?>
-                <a href="/profile">Profile</a>
+                <a href="/profile">
+                    <div class="w-[50px] h-[50px] rounded-full overflow-hidden flex justify-center">
+                        <img class="w-full" src="<?= ($user) ? '/uploads/profile/' . $user['profile'] : '../../public/profile.png' ?>" alt="?">
+                    </div>
+                </a>
+
+                <!-- <?= htmlspecialchars(($user) ? $user['first_name'] . ' ' . $user['last_name'] : 'Guest') ?> -->
+                <!-- <a href="/profile">Profile</a> -->
             </div>
         </div>
     </header>
