@@ -11,38 +11,39 @@
 
             $user = $this->user->getUserById($_SESSION['user_id']);
 
-            require "./app/views/home.php";
+            require "./app/views/store/home.php";
         }
         
         public function login() {
-            $errorLogin = '';
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $errorLogin = '';
 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+            
+                $user = $this->user->getUserByEmail($email);
 
-            $user = $this->user->getUserByEmail($email);
-
-            if (!$user){
-                $errorLogin = "You don't have an account,..."; 
-            }
-
-            if (!$errorLogin && password_verify($password, $user['password'])){
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['role'] = $user['role_id'];
-
-                $_SESSION['expire_at'] = time() + 60;
-
-                if ($_SESSION['role'] == 2){
-                    header("Location: /dashboard");
-                    exit();
+                if (!$user){
+                    $errorLogin = "You don't have an account,..."; 
                 }
 
-                header("Location: /");
-                exit();
-            } else {
-                $errorLogin = 'Incorrect password';
-            }
+                if (!$errorLogin && password_verify($password, $user['password'])){
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['role'] = $user['role_id'];
 
+                    $_SESSION['expire_at'] = time() + 60;
+
+                    if ($_SESSION['role'] == 2){
+                        header("Location: /dashboard");
+                        exit();
+                    }
+
+                    header("Location: /");
+                    exit();
+                } else {
+                    $errorLogin = 'Incorrect password';
+                }
+            }
 
             require "./app/views/auth/login.php"; 
         }

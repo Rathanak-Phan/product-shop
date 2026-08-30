@@ -12,8 +12,8 @@
             requireAdmin();
 
             $pageTitle = "Admin Dashboard";
-
-            $content = "../views/admin/dashboard.php";
-            require "./app/views/admin/layout.php";
+            $content = "app/views/admin/dashboard/index.php";
+            
+            require "./app/views/layouts/admin.php";
         }
     }
