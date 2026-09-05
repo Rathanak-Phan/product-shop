@@ -26,15 +26,42 @@
                 'editProfile'
             ],
 
-            '/logout' => [
-                $userController,
-                'logout'
-            ],
+            
 
             // Admin
             '/dashboard' => [
                 $adminController,
                 'showDashboard'
+            ],
+
+            '/dashboard/products' => [
+                $adminController,
+                'showProduct'
+            ],
+
+            '/dashboard/categories' => [
+                $adminController,
+                'showCategories'
+            ],
+
+            '/dashboard/orders' => [
+                $adminController,
+                'showOrders'
+            ],
+
+            '/dashboard/customers' => [
+                $adminController,
+                'showCustomers'
+            ],
+
+            '/dashboard/settings' => [
+                $adminController,
+                "showSettings"
+            ],
+
+            '/logout' => [
+                $userController,
+                'logout'
             ]
         ],
 

@@ -10,6 +10,7 @@
             require "./app/helpers/auth.php";
             requireAuth();
             $user = $this->user->getUserById($_SESSION['user_id']);
+            
             require "./app/views/profile/profile.php";
         }
 

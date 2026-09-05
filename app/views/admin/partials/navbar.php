@@ -15,13 +15,13 @@
 
         <!-- Profile -->
         <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">
-                A
+            <div class="w-9 h-9 rounded-full overflow-hidden bg-blue-600 text-white flex items-center justify-center font-semibold">
+                <img src="<?= '/uploads/profile/' . htmlspecialchars($profile['profile']) ?>" alt="">
             </div>
 
             <div>
                 <p class="text-sm font-medium text-gray-800">Administrator</p>
-                <p class="text-xs text-gray-500">Admin</p>
+                <p class="text-xs text-gray-500"><?= htmlspecialchars($profile['first_name'] . " " . $profile['last_name']) ?></p>
             </div>
         </div>
     </div>
