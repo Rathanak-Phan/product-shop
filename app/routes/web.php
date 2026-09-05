@@ -79,6 +79,12 @@
             '/profile/update' => [
                 $userController,
                 'update'
+            ],
+
+            // Category
+            '/dashboard/categories/create' => [
+                $categoryController,
+                'addCategory'
             ]
 
             

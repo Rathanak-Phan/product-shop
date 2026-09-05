@@ -110,35 +110,33 @@ $categoryRows = [
                     <tr>
                         <th scope="col" class="px-6 py-4 font-semibold">Category</th>
                         <th scope="col" class="px-6 py-4 font-semibold">Description</th>
-                        <th scope="col" class="px-6 py-4 font-semibold">Products</th>
                         <th scope="col" class="px-6 py-4 font-semibold">Created By</th>
                         <th scope="col" class="px-6 py-4 font-semibold">Status</th>
                         <th scope="col" class="px-6 py-4 text-right font-semibold">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
-                    <?php foreach ($categoryRows as $categoryRow): ?>
+                    <?php foreach ($categories as $category): ?>
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <span class="flex h-10 w-10 items-center justify-center rounded-lg <?= htmlspecialchars($categoryRow['iconColor']) ?>">
-                                        <i class="fa-solid <?= htmlspecialchars($categoryRow['icon']) ?>" aria-hidden="true"></i>
+                                    <span class="flex h-10 w-10 items-center justify-center rounded-lg <?= htmlspecialchars($category['iconColor']) ?>">
+                                        <i class="fa-solid <?= htmlspecialchars($category['icon']) ?>" aria-hidden="true"></i>
                                     </span>
-                                    <span class="font-medium text-gray-900"><?= htmlspecialchars($categoryRow['name']) ?></span>
+                                    <span class="font-medium text-gray-900"><?= htmlspecialchars($category['category_name']) ?></span>
                                 </div>
                             </td>
-                            <td class="max-w-xs px-6 py-4 text-gray-500"><?= htmlspecialchars($categoryRow['description']) ?></td>
-                            <td class="px-6 py-4 font-medium text-gray-700"><?= htmlspecialchars((string) $categoryRow['products']) ?></td>
+                            <td class="max-w-xs px-6 py-4 text-gray-500"><?= htmlspecialchars($category['description']) ?></td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2">
-                                    <span class="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium text-white <?= htmlspecialchars($categoryRow['avatar']) ?>"><?= htmlspecialchars($categoryRow['initial']) ?></span>
-                                    <span class="font-medium text-gray-700"><?= htmlspecialchars($categoryRow['creator']) ?></span>
+                                    <span class="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium text-white <?= htmlspecialchars($categoryRow['avatar']) ?>"><?= htmlspecialchars($category['first_name']) ?></span>
+                                    <span class="font-medium text-gray-700"><?= htmlspecialchars($category['first_name'] . " " . $category['last_name']) ?></span>
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <?php $isActive = $categoryRow['status'] === 'Active'; ?>
+                                <?php $isActive = $category['status'] === 'Active'; ?>
                                 <span class="rounded-full px-2.5 py-1 text-xs font-medium <?= $isActive ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600' ?>">
-                                    <?= htmlspecialchars($categoryRow['status']) ?>
+                                    <?= htmlspecialchars($category['status']) ?>
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-right">

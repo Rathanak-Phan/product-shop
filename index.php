@@ -6,11 +6,17 @@
     require "./app/controllers/AuthController.php";
     require "./app/controllers/UserController.php";
     require "./app/controllers/AdminController.php";
+    require "./app/controllers/CategoryController.php";
+    require "./app/models/Category.php";
     
     $user = new User($conn);
+    $category = new Category($conn);
+
+
     $authController = new AuthController($user);
     $userController = new UserController($user);
-    $adminController =  new AdminController($user);
+    $adminController =  new AdminController($user, $category);
+    $categoryController = new CategoryController($category);
 
     require "./app/routes/web.php";
 

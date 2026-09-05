@@ -11,7 +11,7 @@ $description = $category['description'] ?? ($isEditingCategory ? 'Laptops and co
 $status = $category['status'] ?? 'active';
 ?>
 
-<form method="POST" action="<?= htmlspecialchars($formAction) ?>" class="p-6">
+<form method="POST" action="/dashboard/categories/create" class="p-6">
     <div class="space-y-5">
         <div>
             <label for="category_name" class="block text-sm font-medium text-gray-700">

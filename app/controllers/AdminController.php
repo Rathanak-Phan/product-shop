@@ -1,9 +1,11 @@
 <?php
     class AdminController {
         private $admin;
+        private $category;
 
-        public function __construct($admin){
+        public function __construct($admin, $category){
             $this->admin = $admin;
+            $this->category = $category;
         }
 
         public function showDashboard(){
@@ -24,7 +26,6 @@
             requireAdmin();
             $profile = $this->admin->getUserById($_SESSION['user_id']);
 
-
             $pageTitle = "Product Management";
             $content = "app/views/admin/products/index.php";
             
@@ -37,6 +38,10 @@
             requireAdmin();
             $profile = $this->admin->getUserById($_SESSION['user_id']);
 
+            $categories = $this->category->getAll();
+
+            // var_dump($categories);
+            // die();
 
             $pageTitle = "Category Management";
             $content = "app/views/admin/categories/index.php";

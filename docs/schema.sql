@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
 
@@ -7,7 +9,9 @@ CREATE TABLE roles (
 );
 
 INSERT INTO roles (name) VALUES
-('costumer'),
+('costumer');
+
+INSERT INTO roles (name) VALUES
 ('admin');
 
 
@@ -26,5 +30,36 @@ CREATE TABLE users (
     FOREIGN KEY (role_id) REFERENCES roles(id),
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP    
+);
+
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NULL,
+    status enum('Active', 'Inactive') DEFAULT 'Active',
+
+    created_by INT,
+
+    FOREIGN KEY (created_by) REFERENCES users(id),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    );
+
+);
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NULL,
+    product_code VARCHAR(50) NOT NULL,
+    price DECIMAL(10, 2),
+    stock INT,
+    
+    category_id INT,
+
+    FOREIGN KEY (category_id) REFERENCES category(id),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+)
