@@ -49,6 +49,11 @@
                 'edit'
             ],
 
+            '/dashboard/categories/remove' => [
+                $categoryController,
+                'remove'
+            ],
+
             '/dashboard/orders' => [
                 $adminController,
                 'showOrders'
@@ -95,6 +100,11 @@
             '/dashboard/categories/update' => [
                 $categoryController,
                 'update'
+            ],
+
+            '/dashboard/categories/delete' => [
+                $categoryController,
+                'delete'
             ]
 
             

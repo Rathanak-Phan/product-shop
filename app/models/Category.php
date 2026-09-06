@@ -80,4 +80,40 @@
                 $sql
             );
         }
+
+        public function delete($id) {
+            $sql = "DELETE FROM category WHERE id = $id";
+
+            return mysqli_query(
+                $this->connection,
+                $sql
+            );
+        }
+
+        public function getTotal(){
+            $sql = "SELECT COUNT(*) AS total
+                FROM category
+            ";
+
+            $result = mysqli_query(
+                $this->connection,
+                $sql
+            );
+
+            return mysqli_fetch_assoc($result)['total'];
+        }
+
+        public function getActive() {
+            $sql = "SELECT COUNT(*) AS active
+                FROM category
+                WHERE status = 'Active'
+            ";
+
+            $result = mysqli_query(
+                $this->connection,
+                $sql
+            );
+
+            return mysqli_fetch_assoc($result)['active'];
+        }
     }

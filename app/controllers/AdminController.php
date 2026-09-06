@@ -39,7 +39,9 @@
             $profile = $this->admin->getUserById($_SESSION['user_id']);
 
             $categories = $this->category->getAll();
-
+            $total = $this->category->getTotal();
+            $active = $this->category->getActive();
+            
             // var_dump($categories);
             // die();
 

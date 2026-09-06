@@ -19,7 +19,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-500">Total Categories</p>
-                    <p class="mt-2 text-3xl font-bold text-gray-900">12</p>
+                    <p class="mt-2 text-3xl font-bold text-gray-900"><?= $total ?></p>
                 </div>
                 <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
                     <i class="fa-solid fa-tags" aria-hidden="true"></i>
@@ -31,7 +31,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-500">Active Categories</p>
-                    <p class="mt-2 text-3xl font-bold text-green-600">10</p>
+                    <p class="mt-2 text-3xl font-bold text-green-600"><?= $active ?></p>
                 </div>
                 <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-green-50 text-green-600">
                     <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
@@ -105,7 +105,7 @@
                                 <a href="/dashboard/categories/edit?id=<?= $category['id'] ?>#edit-category" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-blue-600 hover:bg-blue-50" title="Edit <?= htmlspecialchars($categoryRow['name']) ?>" aria-label="Edit <?= htmlspecialchars($categoryRow['name']) ?>">
                                     <i class="fa-solid fa-pen" aria-hidden="true"></i>
                                 </a>
-                                <a href="#delete-category" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-red-600 hover:bg-red-50" title="Delete <?= htmlspecialchars($categoryRow['name']) ?>" aria-label="Delete <?= htmlspecialchars($categoryRow['name']) ?>">
+                                <a href="/dashboard/categories/remove?id=<?= $category['id'] ?>#delete-category" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-red-600 hover:bg-red-50" title="Delete <?= htmlspecialchars($categoryRow['name']) ?>" aria-label="Delete <?= htmlspecialchars($categoryRow['name']) ?>">
                                     <i class="fa-solid fa-trash" aria-hidden="true"></i>
                                 </a>
                             </td>
@@ -152,8 +152,11 @@
         <h2 id="delete-category-title" class="mt-4 text-lg font-semibold text-gray-900">Delete category?</h2>
         <p class="mt-2 text-sm leading-6 text-gray-500">Are you sure you want to delete this category? This action cannot be undone.</p>
         <div class="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-            <a href="#" class="rounded-lg border border-gray-300 px-4 py-2.5 text-center text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</a>
-            <button type="button" class="rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700">Delete Category</button>
+            <a href="/dashboard/categories" class="rounded-lg border border-gray-300 px-4 py-2.5 text-center text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</a>
+            <form action="/dashboard/categories/delete" method="POST">
+                <input type="hidden" name="id" value="<?= $delete_by_id ?>">
+                <button type="submit" class="rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700">Delete Category</button>
+            </form>
         </div>
     </div>
 </div>

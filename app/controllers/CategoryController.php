@@ -87,4 +87,32 @@
             
             require "./app/views/layouts/admin.php";
         }
+
+        public function remove(){
+            require "./app/helpers/admin.php";
+            requireAdmin();
+            $profile = $this->user->getUserById($_SESSION['user_id']);
+
+            $delete_by_id = $_GET['id'];
+
+            $pageTitle = "Update category";
+            $content = "app/views/admin/categories/index.php";
+            require "./app/views/layouts/admin.php";
+        }
+
+        public function delete() {
+            require "./app/helpers/admin.php";
+            requireAdmin();
+
+            $id = $_POST['id'];
+
+            if ($_SERVER['REQUEST_METHOD'] == "POST"){
+                $this->category->delete($id);
+
+                header("Location: /dashboard/categories");
+                exit();
+            }
+        }
+
+        
     }
