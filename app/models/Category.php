@@ -28,6 +28,7 @@
 
         public function getAll() {
             $sql = "SELECT 
+                category.id,
                 category.category_name,
                 category.description,
                 category.status,
@@ -52,5 +53,31 @@
             }
 
             return $categories;
+        }
+
+        public function getById($id) {
+            $sql = "SELECT * FROM category WHERE id = $id";
+
+            $result = mysqli_query(
+                $this->connection,
+                $sql
+            );
+
+            return mysqli_fetch_assoc($result);
+        }
+
+        public function update($id, $category_name, $description, $status){
+            $sql = "UPDATE category
+                SET 
+                    category_name = '$category_name',
+                    description = '$description',
+                    status = '$status'
+                WHERE id = $id
+            ";
+
+            return mysqli_query(
+                $this->connection,
+                $sql
+            );
         }
     }

@@ -44,6 +44,11 @@
                 'showCategories'
             ],
 
+            '/dashboard/categories/edit' => [
+                $categoryController,
+                'edit'
+            ],
+
             '/dashboard/orders' => [
                 $adminController,
                 'showOrders'
@@ -85,7 +90,14 @@
             '/dashboard/categories/create' => [
                 $categoryController,
                 'addCategory'
+            ],
+
+            '/dashboard/categories/update' => [
+                $categoryController,
+                'update'
             ]
+
+            
 
             
         ]

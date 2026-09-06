@@ -43,6 +43,10 @@
             // var_dump($categories);
             // die();
 
+            $category = [];
+            $update_by_category_id = null;
+            $isEditingCategory = false;
+
             $pageTitle = "Category Management";
             $content = "app/views/admin/categories/index.php";
             

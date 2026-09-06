@@ -1,40 +1,3 @@
-<?php
-$categoryRows = [
-    [
-        'name' => 'Computers',
-        'description' => 'Laptops and computer equipment.',
-        'products' => 24,
-        'creator' => 'Administrator',
-        'initial' => 'A',
-        'avatar' => 'bg-blue-600',
-        'icon' => 'fa-laptop',
-        'iconColor' => 'bg-blue-50 text-blue-600',
-        'status' => 'Active',
-    ],
-    [
-        'name' => 'Audio',
-        'description' => 'Headphones, speakers, and audio accessories.',
-        'products' => 18,
-        'creator' => 'Srey Admin',
-        'initial' => 'S',
-        'avatar' => 'bg-violet-600',
-        'icon' => 'fa-headphones',
-        'iconColor' => 'bg-violet-50 text-violet-600',
-        'status' => 'Active',
-    ],
-    [
-        'name' => 'Accessories',
-        'description' => 'Keyboards, hubs, cables, and more.',
-        'products' => 42,
-        'creator' => 'Vanna Admin',
-        'initial' => 'V',
-        'avatar' => 'bg-orange-500',
-        'icon' => 'fa-keyboard',
-        'iconColor' => 'bg-orange-50 text-orange-600',
-        'status' => 'Inactive',
-    ],
-];
-?>
 
 <div class="space-y-6">
     <!-- Page header -->
@@ -120,16 +83,15 @@ $categoryRows = [
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <span class="flex h-10 w-10 items-center justify-center rounded-lg <?= htmlspecialchars($category['iconColor']) ?>">
-                                        <i class="fa-solid <?= htmlspecialchars($category['icon']) ?>" aria-hidden="true"></i>
-                                    </span>
                                     <span class="font-medium text-gray-900"><?= htmlspecialchars($category['category_name']) ?></span>
                                 </div>
                             </td>
                             <td class="max-w-xs px-6 py-4 text-gray-500"><?= htmlspecialchars($category['description']) ?></td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2">
-                                    <span class="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium text-white <?= htmlspecialchars($categoryRow['avatar']) ?>"><?= htmlspecialchars($category['first_name']) ?></span>
+                                    <div class="w-[40px] h-[40px] rounded-full overflow-hidden">
+                                        <img src="<?= '/uploads/profile/' . $category['profile'] ?>" alt="">
+                                    </div>
                                     <span class="font-medium text-gray-700"><?= htmlspecialchars($category['first_name'] . " " . $category['last_name']) ?></span>
                                 </div>
                             </td>
@@ -140,7 +102,7 @@ $categoryRows = [
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <a href="#edit-category" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-blue-600 hover:bg-blue-50" title="Edit <?= htmlspecialchars($categoryRow['name']) ?>" aria-label="Edit <?= htmlspecialchars($categoryRow['name']) ?>">
+                                <a href="/dashboard/categories/edit?id=<?= $category['id'] ?>#edit-category" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-blue-600 hover:bg-blue-50" title="Edit <?= htmlspecialchars($categoryRow['name']) ?>" aria-label="Edit <?= htmlspecialchars($categoryRow['name']) ?>">
                                     <i class="fa-solid fa-pen" aria-hidden="true"></i>
                                 </a>
                                 <a href="#delete-category" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-red-600 hover:bg-red-50" title="Delete <?= htmlspecialchars($categoryRow['name']) ?>" aria-label="Delete <?= htmlspecialchars($categoryRow['name']) ?>">
@@ -173,7 +135,7 @@ $categoryRows = [
     <div class="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white shadow-xl" role="dialog" aria-modal="true" aria-labelledby="edit-category-title">
         <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4">
             <h2 id="edit-category-title" class="text-lg font-semibold text-gray-900">Edit Category</h2>
-            <a href="#" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700" aria-label="Close edit category modal">
+            <a href="/dashboard/categories" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-700" aria-label="Close edit category modal">
                 <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
             </a>
         </div>

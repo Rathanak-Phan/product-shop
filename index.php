@@ -16,7 +16,7 @@
     $authController = new AuthController($user);
     $userController = new UserController($user);
     $adminController =  new AdminController($user, $category);
-    $categoryController = new CategoryController($category);
+    $categoryController = new CategoryController($category, $user);
 
     require "./app/routes/web.php";
 
