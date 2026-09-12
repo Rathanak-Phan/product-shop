@@ -38,12 +38,21 @@
             requireAdmin();
             $profile = $this->admin->getUserById($_SESSION['user_id']);
 
-            $categories = $this->category->getAll();
+            $keyword = $_GET['search'] ?? '';
+
+            if (!empty($keyword)) {
+                $categories = $this->category->searchCategory($keyword);
+            } else {    
+                $categories = $this->category->getAll();
+            }
+
             $total = $this->category->getTotal();
             $active = $this->category->getActive();
+            $inactive = $this->category->getInactive();
             
             // var_dump($categories);
             // die();
+
 
             $category = [];
             $update_by_category_id = null;

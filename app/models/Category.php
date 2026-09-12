@@ -116,4 +116,38 @@
 
             return mysqli_fetch_assoc($result)['active'];
         }
+
+        public function getInactive() {
+            $sql = "SELECT COUNT(*) AS active
+                FROM category
+                WHERE status = 'Inactive'
+            ";
+
+            $result = mysqli_query(
+                $this->connection,
+                $sql
+            );
+
+            return mysqli_fetch_assoc($result)['active'];
+        }
+
+        public function searchCategory($keyword) {
+            $sql = "SELECT * FROM 
+                category WHERE category_name
+                LIKE '%$keyword%';
+            ";
+
+            $result = mysqli_query(
+                $this->connection,
+                $sql
+            );
+
+            $categories = [];
+
+            while($row = mysqli_fetch_assoc(($result))){
+                $categories[] = $row;
+            }
+
+            return $categories;
+        }
     }

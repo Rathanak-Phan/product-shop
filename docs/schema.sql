@@ -54,6 +54,7 @@ CREATE TABLE products (
     product_code VARCHAR(50) NOT NULL,
     price DECIMAL(10, 2),
     stock INT,
+    product_image TEXT,
     
     category_id INT,
 

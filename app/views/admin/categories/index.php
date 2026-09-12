@@ -43,7 +43,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-500">Uncategorized Products</p>
-                    <p class="mt-2 text-3xl font-bold text-amber-600">3</p>
+                    <p class="mt-2 text-3xl font-bold text-amber-600"><?= $inactive ?></p>
                 </div>
                 <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-amber-50 text-amber-600">
                     <i class="fa-solid fa-box-open" aria-hidden="true"></i>
@@ -60,11 +60,17 @@
                 <p class="mt-1 text-sm text-gray-500">View and manage your product categories.</p>
             </div>
 
-            <label class="relative w-full sm:w-64">
-                <span class="sr-only">Search categories</span>
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400" aria-hidden="true"></i>
-                <input type="search" placeholder="Search category..." class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 text-sm text-gray-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
-            </label>
+            <form action="/dashboard/categories" method="GET">
+                <label class="relative w-full sm:w-64">
+                    <span class="sr-only">Search categories</span>
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400" aria-hidden="true"></i>
+                    <input 
+                        type="search"
+                        name="search"
+                        value="<?= htmlspecialchars_decode($_GET['search'] ?? '') ?>" 
+                        placeholder="Search category..." class="w-full rounded-lg border border-gray-300 py-2.5 pl-10 pr-3 text-sm text-gray-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+                </label>
+            </form>
         </div>
 
         <div class="overflow-x-auto">
