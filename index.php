@@ -8,15 +8,18 @@
     require "./app/controllers/AdminController.php";
     require "./app/controllers/CategoryController.php";
     require "./app/models/Category.php";
+    require "./app/models/Product.php";
     
     $user = new User($conn);
     $category = new Category($conn);
+    $product = new Product($conn);
 
 
     $authController = new AuthController($user);
     $userController = new UserController($user);
     $adminController =  new AdminController($user, $category);
     $categoryController = new CategoryController($category, $user);
+    $productController = new ProductController($product);
 
     require "./app/routes/web.php";
 

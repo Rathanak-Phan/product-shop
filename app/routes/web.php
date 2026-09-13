@@ -105,9 +105,13 @@
             '/dashboard/categories/delete' => [
                 $categoryController,
                 'delete'
-            ]
+            ],
 
-            
+            // Product
+            '/dashboard/products/create' => [
+                $productController,
+                'addProduct'
+            ]
 
             
         ]

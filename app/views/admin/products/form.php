@@ -1,9 +1,9 @@
 <?php
 $isEditing = $isEditing ?? false;
-$productFormAction = $isEditing ? '/dashboard/products/update/1' : '/dashboard/products/store';
+$productFormAction = $isEditing ? '/dashboard/products/update/1' : '/dashboard/products/create';
 ?>
 
-<form method="POST" action="<?= htmlspecialchars($productFormAction) ?>" class="p-6">
+<form method="POST" action="<?= htmlspecialchars($productFormAction) ?>" class="p-6" enctype="multipart/form-data">
     <div class="grid gap-5 sm:grid-cols-2">
         <div class="sm:col-span-2">
             <label for="product_name" class="block text-sm font-medium text-gray-700">Product Name</label>
@@ -12,14 +12,16 @@ $productFormAction = $isEditing ? '/dashboard/products/update/1' : '/dashboard/p
 
         <div>
             <label for="sku" class="block text-sm font-medium text-gray-700">SKU</label>
-            <input id="sku" name="sku" type="text" value="<?= $isEditing ? 'LAP-001' : '' ?>" placeholder="e.g. LAP-004" class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
+            <input id="sku" name="code" type="text" value="<?= $isEditing ? 'LAP-001' : '' ?>" placeholder="e.g. LAP-004" class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
         </div>
 
         <div>
             <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
             <select id="category_id" name="category_id" class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
                 <option><?= $isEditing ? 'Electronics' : 'Select category' ?></option>
-                <option>Accessories</option>
+                <?php foreach($categories as $category) { ?>
+                    <option value="<?= $category['id'] ?>"><?= $category['category_name'] ?></option>
+                <?php } ?>
             </select>
         </div>
 
@@ -33,6 +35,11 @@ $productFormAction = $isEditing ? '/dashboard/products/update/1' : '/dashboard/p
             <input id="quantity" name="quantity" type="number" value="<?= $isEditing ? '45' : '' ?>" placeholder="0" class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
         </div>
 
+        <div class="sm:col-span-2">
+            <label for="product_description" class="block text-sm font-medium text-gray-700">Description</label>
+            <input type="file" name="image">
+        </div>
+        
         <div class="sm:col-span-2">
             <label for="product_description" class="block text-sm font-medium text-gray-700">Description</label>
             <textarea id="product_description" name="description" rows="3" placeholder="Short product description" class="mt-2 w-full resize-none rounded-lg border border-gray-300 px-3 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"><?= $isEditing ? '13-inch, Midnight' : '' ?></textarea>

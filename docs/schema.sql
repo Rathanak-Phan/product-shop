@@ -54,9 +54,13 @@ CREATE TABLE products (
     product_code VARCHAR(50) NOT NULL,
     price DECIMAL(10, 2),
     stock INT,
+    description VARCHAR(255) NULL,
     product_image TEXT,
     
     category_id INT,
+    created_by INT,
+
+    FOREIGN KEY (created_by) REFERENCES users(id),
 
     FOREIGN KEY (category_id) REFERENCES category(id),
 

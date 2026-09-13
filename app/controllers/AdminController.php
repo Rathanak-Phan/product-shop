@@ -25,6 +25,7 @@
 
             requireAdmin();
             $profile = $this->admin->getUserById($_SESSION['user_id']);
+            $categories = $this->category->getAll();
 
             $pageTitle = "Product Management";
             $content = "app/views/admin/products/index.php";
