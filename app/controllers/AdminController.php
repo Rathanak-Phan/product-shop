@@ -2,10 +2,12 @@
     class AdminController {
         private $admin;
         private $category;
+        private $product;
 
-        public function __construct($admin, $category){
+        public function __construct($admin, $category, $product){
             $this->admin = $admin;
             $this->category = $category;
+            $this->product = $product;
         }
 
         public function showDashboard(){
@@ -26,6 +28,10 @@
             requireAdmin();
             $profile = $this->admin->getUserById($_SESSION['user_id']);
             $categories = $this->category->getAll();
+            $products = $this->product->getAll();
+
+            // var_dump($products);
+            // die();
 
             $pageTitle = "Product Management";
             $content = "app/views/admin/products/index.php";

@@ -69,93 +69,40 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 text-sm">
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
-                                    <i class="fa-solid fa-laptop" aria-hidden="true"></i>
+                    <?php foreach($products as $product) {?>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="flex h-10 w-10 items-center justify-center rounded-lg text-orange-600">
+                                        <img src="<?= '/uploads/products/' . htmlspecialchars($product['product_image']) ?>" alt="">
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900"><?= $product['product_name'] ?></p>
+                                        <p class="text-xs text-gray-500"><?= $product['description'] ?></p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-gray-900">MacBook Air M3</p>
-                                    <p class="text-xs text-gray-500">13-inch, Midnight</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-gray-600">LAP-001</td>
-                        <td class="px-6 py-4 text-gray-600">Electronics</td>
-                        <td class="px-6 py-4 font-medium">$1,099.00</td>
-                        <td class="px-6 py-4">
-                            <span class="rounded-full bg-green-100 px-2.5 py-1 text-xs font-medium text-green-700">45 in stock</span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#edit-product" class="mr-4 text-blue-600 hover:text-blue-800" title="Edit product">
-                                <i class="fa-solid fa-pen" aria-hidden="true"></i>
-                                <span class="sr-only">Edit</span>
-                            </a>
-                            <a href="#delete-product" class="text-red-600 hover:text-red-800" title="Delete product">
-                                <i class="fa-solid fa-trash" aria-hidden="true"></i>
-                                <span class="sr-only">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-50 text-purple-600">
-                                    <i class="fa-solid fa-headphones" aria-hidden="true"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-gray-900">Wireless Headphones</p>
-                                    <p class="text-xs text-gray-500">Noise cancelling</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-gray-600">AUD-002</td>
-                        <td class="px-6 py-4 text-gray-600">Accessories</td>
-                        <td class="px-6 py-4 font-medium">$129.00</td>
-                        <td class="px-6 py-4">
-                            <span class="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-700">8 in stock</span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#edit-product" class="mr-4 text-blue-600 hover:text-blue-800" title="Edit product">
-                                <i class="fa-solid fa-pen" aria-hidden="true"></i>
-                                <span class="sr-only">Edit</span>
-                            </a>
-                            <a href="#delete-product" class="text-red-600 hover:text-red-800" title="Delete product">
-                                <i class="fa-solid fa-trash" aria-hidden="true"></i>
-                                <span class="sr-only">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 text-orange-600">
-                                    <i class="fa-solid fa-keyboard" aria-hidden="true"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-gray-900">Mechanical Keyboard</p>
-                                    <p class="text-xs text-gray-500">RGB, Brown switches</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-gray-600">KEY-003</td>
-                        <td class="px-6 py-4 text-gray-600">Accessories</td>
-                        <td class="px-6 py-4 font-medium">$89.00</td>
-                        <td class="px-6 py-4">
-                            <span class="rounded-full bg-red-100 px-2.5 py-1 text-xs font-medium text-red-700">Out of stock</span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#edit-product" class="mr-4 text-blue-600 hover:text-blue-800" title="Edit product">
-                                <i class="fa-solid fa-pen" aria-hidden="true"></i>
-                                <span class="sr-only">Edit</span>
-                            </a>
-                            <a href="#delete-product" class="text-red-600 hover:text-red-800" title="Delete product">
-                                <i class="fa-solid fa-trash" aria-hidden="true"></i>
-                                <span class="sr-only">Delete</span>
-                            </a>
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="px-6 py-4 text-gray-600"><?= $product['product_code'] ?></td>
+                            <td class="px-6 py-4 text-gray-600"><?= $product['category_name'] ?></td>
+                            <td class="px-6 py-4 font-medium"><?= $product['price'] ?></td>
+                            <td class="px-6 py-4">
+                                <span class="rounded-full bg-red-100 px-2.5 py-1 text-xs font-medium text-red-700">
+                                    <?= ($product['stock']) > 0 ? (($product['stock']) < 10 ? 'Low Stock' : $product['stock']) : 'Out of Stock' ?>
+                                    <?= $product['stock'] ?>
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="#edit-product" class="mr-4 text-blue-600 hover:text-blue-800" title="Edit product">
+                                    <i class="fa-solid fa-pen" aria-hidden="true"></i>
+                                    <span class="sr-only">Edit</span>
+                                </a>
+                                <a href="#delete-product" class="text-red-600 hover:text-red-800" title="Delete product">
+                                    <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                                    <span class="sr-only">Delete</span>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

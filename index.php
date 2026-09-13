@@ -8,6 +8,7 @@
     require "./app/controllers/AdminController.php";
     require "./app/controllers/CategoryController.php";
     require "./app/models/Category.php";
+    require "./app/controllers/ProductController.php";
     require "./app/models/Product.php";
     
     $user = new User($conn);
@@ -17,9 +18,9 @@
 
     $authController = new AuthController($user);
     $userController = new UserController($user);
-    $adminController =  new AdminController($user, $category);
+    $adminController =  new AdminController($user, $category, $product);
     $categoryController = new CategoryController($category, $user);
-    $productController = new ProductController($product);
+    $productController = new ProductController($product, $category, $user);
 
     require "./app/routes/web.php";
 
