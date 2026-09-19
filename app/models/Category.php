@@ -150,4 +150,20 @@
 
             return $categories;
         }
+
+        public function getCategoryWithProduct($id) {
+            $sql = "SELECT COUNT(*) AS productCategory
+                FROM category
+                INNER JOIN products
+                ON products.category_id = category.id 
+                WHERE category.id = $id
+            ";
+
+            $result = mysqli_query(
+                $this->connection,
+                $sql
+            );
+
+            return mysqli_fetch_array($result);
+        }
     }

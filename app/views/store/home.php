@@ -112,34 +112,12 @@
             </div>
 
             <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <a href="#products" class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-md">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-xl text-blue-600">
-                        <i class="fa-solid fa-laptop" aria-hidden="true"></i>
-                    </span>
-                    <h3 class="mt-4 font-semibold">Computers</h3>
-                    <p class="mt-1 text-sm text-slate-500">24 products</p>
-                </a>
-                <a href="#products" class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-md">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-xl text-violet-600">
-                        <i class="fa-solid fa-headphones" aria-hidden="true"></i>
-                    </span>
-                    <h3 class="mt-4 font-semibold">Audio</h3>
-                    <p class="mt-1 text-sm text-slate-500">18 products</p>
-                </a>
-                <a href="#products" class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-md">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-xl text-orange-600">
-                        <i class="fa-solid fa-keyboard" aria-hidden="true"></i>
-                    </span>
-                    <h3 class="mt-4 font-semibold">Accessories</h3>
-                    <p class="mt-1 text-sm text-slate-500">42 products</p>
-                </a>
-                <a href="#products" class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-md">
-                    <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-xl text-emerald-600">
-                        <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
-                    </span>
-                    <h3 class="mt-4 font-semibold">Mobile</h3>
-                    <p class="mt-1 text-sm text-slate-500">36 products</p>
-                </a>
+                <?php foreach ($categories as $category) { ?>
+                    <a href="#products" class="group rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 hover:-translate-y-1 hover:shadow-md">
+                        <h3 class="mt-4 font-semibold"><?= htmlspecialchars($category['category_name']) ?></h3>
+                        <p class="mt-1 text-sm text-slate-500"><?= htmlspecialchars($category['product_count']) ?></p>
+                    </a>        
+                <?php } ?>
             </div>
         </section>
 

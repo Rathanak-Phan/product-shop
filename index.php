@@ -16,7 +16,7 @@
     $product = new Product($conn);
 
 
-    $authController = new AuthController($user);
+    $authController = new AuthController($user, $category);
     $userController = new UserController($user);
     $adminController =  new AdminController($user, $category, $product);
     $categoryController = new CategoryController($category, $user);
