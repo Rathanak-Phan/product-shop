@@ -10,17 +10,19 @@
     require "./app/models/Category.php";
     require "./app/controllers/ProductController.php";
     require "./app/models/Product.php";
+    require "./app/controllers/CartController.php";
     
     $user = new User($conn);
     $category = new Category($conn);
     $product = new Product($conn);
 
 
-    $authController = new AuthController($user, $category);
+    $authController = new AuthController($user, $category, $product);
     $userController = new UserController($user);
     $adminController =  new AdminController($user, $category, $product);
     $categoryController = new CategoryController($category, $user);
     $productController = new ProductController($product, $category, $user);
+    $cartController = new CartController($user);
 
     require "./app/routes/web.php";
 

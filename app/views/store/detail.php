@@ -28,16 +28,16 @@
     <main class="mx-auto max-w-6xl px-4 py-10">
         <!-- Breadcrumbs -->
         <p class="text-sm text-slate-500">
-            <a href="/products" class="hover:underline">Products</a> / Computers / MacBook Air M3
+            <a href="/products" class="hover:underline">Products</a> / <?= htmlspecialchars($product['category_name']) ?> / <?= htmlspecialchars($product['product_name']) ?>
         </p>
 
         <div class="mt-7 grid gap-10 lg:grid-cols-2">
             <!-- Product Images -->
             <div>
-                <img class="h-[420px] w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1000&q=80" alt="MacBook Air M3">
+                <img class="h-[420px] w-full rounded-2xl object-cover" src="<?= '/uploads/products/' . htmlspecialchars($product['product_image']) ?>" alt="MacBook Air M3">
                 <div class="mt-4 grid grid-cols-3 gap-3">
                     <button class="overflow-hidden rounded-lg ring-2 ring-blue-600">
-                        <img class="h-20 w-full object-cover" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=300&q=80" alt="Laptop front">
+                        <img class="h-20 w-full object-cover" src="<?= '/uploads/products/' . htmlspecialchars($product['product_image']) ?>" alt="Laptop front">
                     </button>
                     <button class="rounded-lg bg-slate-200">
                         <i class="fa-solid fa-image text-slate-500"></i>
@@ -50,20 +50,11 @@
 
             <!-- Product Details -->
             <div>
-                <p class="text-sm font-medium text-blue-600">Computers</p>
-                <h1 class="mt-2 text-4xl font-bold">MacBook Air M3</h1>
+                <p class="text-sm font-medium text-blue-600"><?= htmlspecialchars($product['category_name']) ?></p>
+                <h1 class="mt-2 text-4xl font-bold"><?= htmlspecialchars($product['product_name']) ?></h1>
 
-                <div class="mt-3 flex items-center gap-2 text-amber-400">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
-                    <span class="text-sm text-slate-500">4.8 (42 reviews)</span>
-                </div>
-
-                <p class="mt-6 text-3xl font-bold">$1,099.00</p>
-                <p class="mt-6 leading-7 text-slate-600">A lightweight powerhouse with the M3 chip, all-day battery life, and a brilliant 13-inch display.</p>
+                <p class="mt-6 text-3xl font-bold"><?= htmlspecialchars($product['price']) ?> <span class="text-green-500">$</span></p>
+                <p class="mt-6 leading-7 text-slate-600"><?= htmlspecialchars($product['description']) ?></p>
 
                 <div class="mt-6 border-y py-5">
                     <p class="font-medium">Color</p>

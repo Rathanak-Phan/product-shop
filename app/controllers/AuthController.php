@@ -2,26 +2,29 @@
     class AuthController {
         private $user;
         private $category;
+        private $product;
 
-        public function __construct($user, $category)
+        public function __construct($user, $category, $product)
         {
             $this->user = $user;
             $this->category = $category;
+            $this->product = $product;
         }
 
         public function home() {
-
             $user = $this->user->getUserById($_SESSION['user_id']);
-            
+
             $categories = $this->category->getAll();
+
             foreach ($categories as &$category) {
                 $count = $this->category->getCategoryWithProduct($category['id']);
                 $category['product_count'] = $count['productCategory'];
             }
+
             unset($category);
 
-            // var_dump($categories);
-            // die();
+            // Get all products
+            $products = $this->product->getAll();
 
             require "./app/views/store/home.php";
         }

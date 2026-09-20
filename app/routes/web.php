@@ -69,6 +69,22 @@
                 "showSettings"
             ],
 
+            // Cart
+            '/cart' => [
+                $cartController,
+                'show'
+            ],
+
+            '/product' => [
+                $productController,
+                'productDetail'
+            ],
+
+            '/products' => [
+                $productController,
+                'productShop'
+            ],
+
             '/logout' => [
                 $userController,
                 'logout'
