@@ -70,9 +70,9 @@
             ],
 
             // Cart
-            '/cart' => [
+            '/cart/add' => [
                 $cartController,
-                'show'
+                'addToCart'
             ],
 
             '/product' => [
@@ -84,6 +84,9 @@
                 $productController,
                 'productShop'
             ],
+
+
+            
 
             '/logout' => [
                 $userController,
@@ -127,7 +130,12 @@
             '/dashboard/products/create' => [
                 $productController,
                 'addProduct'
-            ]
+            ],
+
+            '/cart/add' => [
+                $cartController,
+                'addToCart'
+            ],
 
             
         ]

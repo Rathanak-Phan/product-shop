@@ -22,7 +22,7 @@
     $adminController =  new AdminController($user, $category, $product);
     $categoryController = new CategoryController($category, $user);
     $productController = new ProductController($product, $category, $user);
-    $cartController = new CartController($user);
+    $cartController = new CartController($user, $product);
 
     require "./app/routes/web.php";
 

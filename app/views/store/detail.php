@@ -19,7 +19,7 @@
             </a>
             <nav class="flex gap-6 text-sm font-medium">
                 <a href="/products">Shop</a>
-                <a href="/cart">Cart (2)</a>
+                <a href="/cart/add">Cart (2)</a>
             </nav>
         </div>
     </header>
@@ -66,15 +66,78 @@
                 </div>
 
                 <div class="mt-6 flex gap-3">
-                    <div class="flex items-center rounded-lg border">
-                        <button class="px-4 py-3">−</button>
-                        <span class="px-3">1</span>
-                        <button class="px-4 py-3">+</button>
-                    </div>
-                    <a href="/cart" class="flex-1 rounded-lg bg-blue-600 py-3 text-center font-semibold text-white hover:bg-blue-700">
-                        <i class="fa-solid fa-cart-shopping mr-2"></i>Add to cart
-                    </a>
+
+                    <form action="/cart/add" method="POST" class="flex flex-1 gap-3">
+
+                        <!-- Product ID -->
+                        <input
+                            type="hidden"
+                            name="id"
+                            value="<?= (int) $product['id'] ?>"
+                        >
+
+                        <!-- Quantity Controls -->
+                        <div class="flex items-center rounded-lg border">
+
+                            <!-- Minus Button -->
+                            <button
+                                type="button"
+                                onclick="changeQty(-1)"
+                                class="px-4 py-3 hover:bg-slate-100"
+                            >
+                                −
+                            </button>
+
+                            <!-- Quantity Input -->
+                            <input
+                                type="number"
+                                id="quantity"
+                                name="quantity"
+                                value="1"
+                                min="1"
+                                class="w-14 text-center outline-none"
+                                readonly
+                            >
+
+                            <!-- Plus Button -->
+                            <button
+                                type="button"
+                                onclick="changeQty(1)"
+                                class="px-4 py-3 hover:bg-slate-100"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                        <!-- Add to Cart -->
+                        <button
+                            type="submit"
+                            class="flex-1 rounded-lg bg-blue-600 py-3 text-center font-semibold text-white hover:bg-blue-700"
+                        >
+                            <i class="fa-solid fa-cart-shopping mr-2"></i>
+                            Add to Cart
+                        </button>
+
+                    </form>
+
                 </div>
+
+                <script>
+                    function changeQty(change) {
+                        const quantityInput = document.getElementById("quantity");
+
+                        let quantity = parseInt(quantityInput.value);
+
+                        quantity += change;
+
+                        if (quantity < 1) {
+                            quantity = 1;
+                        }
+
+                        quantityInput.value = quantity;
+                    }
+                </script>
 
                 <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
                     <p><i class="fa-solid fa-truck-fast mr-2 text-blue-600"></i>Free delivery</p>
